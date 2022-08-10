@@ -19,6 +19,9 @@ def load_archive(name_archive,type = "excel",page_index = 0):
 def get_dates_na(date):
     return date.isna().sum()
 
+def get_value_counts(date):
+    return date.value_counts()
+
 def get_count_total_dates_na(date):
     return date.isna().sum().sum()
 
@@ -94,6 +97,7 @@ def set_delete_column(date,index):
 def set_change_name_column(date,column):
     return date.rename(columns = column,inplace=True)
 
+#detele files duplicate
 def set_delete_duplicate(date):
     return date.drop_duplicates(keep='last', inplace= True)
 
@@ -114,7 +118,7 @@ def show_info_dates_extra1(data):
     v_mn =  get_dates_min(data)
     v_mx =  get_dates_max(data)
 
-    print("Primer Cuartil : {} \nTercer Cuartil : {} \nInter Cuartil : {}\nMediana : {}\nMinima : {}\nMaxima : {}".format(p_q,t_q,i_q,m,v_mn,v_mx))
+    print("Primer Cuartil : {} \nTercer Cuartil : {} \nInter Cuartil : {}\nMinima : {}\nMediana : {}\nMaxima : {}".format(p_q,t_q,i_q,v_mn,m,v_mx))
 
 # show box outliners of value atipicos
 def show_box_outliers(data):
